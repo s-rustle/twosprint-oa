@@ -867,3 +867,89 @@ Waiting for authentication...
 
 ---
 
+
+`npx vercel login` was started but it’s interactive and waits for you to finish in the browser, so it timed out here.
+
+**Run it yourself in your own terminal:**
+
+1. In your project folder, run:
+   ```bash
+   npx vercel login
+   ```
+2. When it shows a URL like `https://vercel.com/oauth/device?user_code=WDBL-BQWF`, either:
+   - Press **Enter** so it opens the browser, or  
+   - Open that URL in your browser yourself.
+3. Sign in or create a Vercel account and approve the device.
+4. When the browser says you’re logged in, the CLI will finish and your token will be saved.
+
+After that, you can deploy with:
+
+```bash
+npx vercel
+```
+
+or for production:
+
+```bash
+npx vercel --prod
+```
+
+---
+
+_**User**_
+
+   npx vercel login
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+
+
+
+
+---
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd "/Users/sarahrussell/Overclock Accelerator/twosprint-oa" && npx vercel login 2>&1</summary>
+
+```bash
+cd "/Users/sarahrussell/Overclock Accelerator/twosprint-oa" && npx vercel login 2>&1
+```
+
+```
+Vercel CLI 50.9.6
+
+  Visit https://vercel.com/oauth/device?user_code=MZHL-GVDC
+  Press [ENTER] to open the browser
+Waiting for authentication...
+
+```
+</details>
+</tool-use>
+
+---
+
+
+`npx vercel login` has to be run in **your** terminal because it waits for you to finish in the browser.
+
+**In your machine’s terminal (not Cursor’s):**
+
+1. Go to your project folder and run:
+   ```bash
+   npx vercel login
+   ```
+2. When it prints something like:
+   ```text
+   Visit https://vercel.com/oauth/device?user_code=XXXX-XXXX
+   Press [ENTER] to open the browser
+   Waiting for authentication...
+   ```
+   either press **Enter** to open the link, or open that URL in your browser.
+3. Sign in to Vercel and approve the device.
+4. When the browser says you’re logged in, the CLI will finish and you’ll be authenticated.
+
+After that, you can deploy with `npx vercel` or `npx vercel --prod`.
+
+---
+
