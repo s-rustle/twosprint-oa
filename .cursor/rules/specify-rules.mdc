@@ -1,0 +1,35 @@
+# twosprint-oa Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2026-02-01
+
+## Active Technologies
+- TypeScript (existing Next.js app) + Next.js (App Router), React, Tailwind CSS (existing) (002-dark-mode-toggle)
+- Client-only: localStorage key for theme preference (no server or database) (002-dark-mode-toggle)
+- TypeScript 5.x, Node 20.x (Next.js 16 runtime) + Next.js 16, React 19, @daily-co/daily-react, Tailwind CSS 4 (existing app) (003-session-timer)
+- None. Timer state is in-memory only; no persistence. (003-session-timer)
+
+- TypeScript 5.x, Node 20.x (Next.js 16 runtime) + Next.js 16, @daily-co/daily-react, @daily-co/daily-js, jotai, Tailwind CSS 4, React 19 (001-overcast-video-classroom)
+
+## Project Structure
+
+```text
+src/
+tests/
+```
+
+## Commands
+
+npm test && npm run lint
+
+## Code Style
+
+TypeScript 5.x, Node 20.x (Next.js 16 runtime): Follow standard conventions
+
+## Recent Changes
+- 003-session-timer: Added TypeScript 5.x, Node 20.x (Next.js 16 runtime) + Next.js 16, React 19, @daily-co/daily-react, Tailwind CSS 4 (existing app)
+- 002-dark-mode-toggle: Added TypeScript (existing Next.js app) + Next.js (App Router), React, Tailwind CSS (existing)
+
+- 001-overcast-video-classroom: Added TypeScript 5.x, Node 20.x (Next.js 16 runtime) + Next.js 16, @daily-co/daily-react, @daily-co/daily-js, jotai, Tailwind CSS 4, React 19
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->

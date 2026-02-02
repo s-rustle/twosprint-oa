@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
+/* Overcast / Overclock visual identity: sharp, futuristic, minimal.
+   Black background, neon teal highlight, yellow/orange accent. */
+/* Dark theme (default): per spec and research.md. */
 :root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --highlight: #00ffd1;   /* neon teal - CTAs, curriculum headers */
+  --accent: #ffbd17;      /* yellow/orange - urgency, key labels */
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --muted: rgba(255, 255, 255, 0.6);
+  --nav-inactive: rgba(255, 255, 255, 0.7);
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --placeholder: rgba(255, 255, 255, 0.4);
+  --label: rgba(255, 255, 255, 0.8);
+  --btn-inactive-bg: rgba(255, 255, 255, 0.05);
+  --btn-inactive-border: rgba(255, 255, 255, 0.2);
+  --btn-inactive-text: rgba(255, 255, 255, 0.7);
+}
+
+/* Light theme: applied when data-theme="light" on html (002-dark-mode-toggle). */
+html[data-theme="light"] {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --highlight: #009988;
+  --accent: #c99400;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+  --muted: rgba(0, 0, 0, 0.6);
+  --nav-inactive: rgba(0, 0, 0, 0.6);
+  --hover-bg: rgba(0, 0, 0, 0.06);
+  --input-bg: rgba(0, 0, 0, 0.04);
+  --input-border: rgba(0, 0, 0, 0.15);
+  --placeholder: rgba(0, 0, 0, 0.45);
+  --label: rgba(0, 0, 0, 0.8);
+  --btn-inactive-bg: rgba(0, 0, 0, 0.04);
+  --btn-inactive-border: rgba(0, 0, 0, 0.15);
+  --btn-inactive-text: rgba(0, 0, 0, 0.65);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-highlight: var(--highlight);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Bold geometric sans for headings; uppercase for impact where needed */
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Section headings: left accent bar (highlight) for sharp, branded hierarchy (Overcast identity). */
+.section-heading {
+  border-left: 4px solid var(--highlight);
+  padding-left: 1rem;
+}
+
+/* Primary CTA link (e.g. Return to Main Lobby): theme-aware, highlight on hover. */
+.cta-link {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--foreground);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.cta-link:hover {
+  background: var(--hover-bg);
+  border-color: var(--highlight);
+}
+
+/* Theme toggle and nav use theme-aware hover (002-dark-mode-toggle) */
+.theme-toggle:hover {
+  background: var(--hover-bg);
+}
+
+/* Input placeholder: theme-aware so readable in light and dark (002-dark-mode-toggle) */
+input::placeholder {
+  color: var(--placeholder);
+}
+
+/* Inactive form button: theme-aware bg/border/text and hover (002-dark-mode-toggle) */
+.btn-inactive {
+  background: var(--btn-inactive-bg);
+  border-color: var(--btn-inactive-border);
+  color: var(--btn-inactive-text);
+}
+.btn-inactive:hover {
+  background: var(--hover-bg);
 }

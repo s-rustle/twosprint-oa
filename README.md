@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Overcast — Video-based Classroom
 
-## Getting Started
+A video classroom app with a main lobby, six cohort rooms, and student/instructor modes. Built with Next.js and [Daily](https://www.daily.co) for real-time video.
 
-First, run the development server:
+## Quick start
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Install dependencies**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   npm install
+   npm install @daily-co/daily-react @daily-co/daily-js jotai
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Configure cohort room URLs**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   No database. Supply six Daily room URLs via environment variables.
 
-## Learn More
+   Create `.env.local` in the repo root:
 
-To learn more about Next.js, take a look at the following resources:
+   **Option A – JSON (recommended)**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   NEXT_PUBLIC_COHORT_ROOM_URLS='["https://your-team.daily.co/cohort-1","https://your-team.daily.co/cohort-2","https://your-team.daily.co/cohort-3","https://your-team.daily.co/cohort-4","https://your-team.daily.co/cohort-5","https://your-team.daily.co/cohort-6"]'
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   **Option B – Six variables**
 
-## Deploy on Vercel
+   ```bash
+   NEXT_PUBLIC_DAILY_COHORT_1_URL=https://your-team.daily.co/cohort-1
+   NEXT_PUBLIC_DAILY_COHORT_2_URL=https://your-team.daily.co/cohort-2
+   # … through COHORT_6
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Replace with your real Daily room URLs from [daily.co](https://www.daily.co).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Run locally**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000). You’ll see the Main Lobby with six cohorts and a Students/Instructors toggle.
+
+4. **Verify flows**
+
+   - **Student**: Click a cohort → class view with video feed → “Return to Main Lobby.”
+   - **Instructor**: Toggle “Instructors” in the header, click a cohort → class view with Control Panel (mute, begin breakout) and “Return to Main Lobby.”
+   - **Video error**: If the feed fails, you see an error message, Retry, and “Return to Main Lobby.”
+
+For full setup, troubleshooting, and production build steps, see **[specs/001-overcast-video-classroom/quickstart.md](specs/001-overcast-video-classroom/quickstart.md)**.
+
+## Tech stack
+
+- Next.js (App Router), TypeScript, React
+- [Daily](https://www.daily.co) for video/audio and app messages
+- Tailwind CSS, Jotai
+
+## Project structure
+
+- `app/lobby` — Main lobby with six cohort tiles
+- `app/cohort/[id]` — Class view (student or instructor) for a cohort
+- `components/` — Header, LayoutShell (includes footer), CohortCard, ClassView, ControlPanel, VideoError, CohortRoomClient
+- `lib/` — cohort-config (room URLs), daily-app-messages (mute/breakout payloads)
+
+## Deploy
+
+Run `npm run build` and `npm start`. Set the same env vars in your host (e.g. Vercel project settings).
